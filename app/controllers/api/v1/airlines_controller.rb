@@ -4,11 +4,9 @@ module Api
  	module V1
     	class AirlinesController < ApplicationController
     		skip_before_filter :verify_authenticity_token
+            
+
     		def search
-    			#from = params[:from]
-    			#to = params[:to]
-    			#Rails.logger.info "From: #{@from}"
-    			#Rails.logger.info "To: #{@from}"  
 
     			search_params = {:from => params[:from], :to => params[:to]}
     			search_params = search_params.to_json
@@ -19,7 +17,7 @@ module Api
     			Rails.logger.info "Search parameters as XML String: #{xml_search_req}"
 
     			#REST call to backend  			
-    			url = 'http://localhost:8080/routes/get'
+    			url = 'http://localhost:8080/routes/search'
 		        escaped_url = URI.encode(url)
 		        uri = URI.parse(escaped_url)
 		        req = Net::HTTP::Post.new(uri.to_s, nil)
@@ -36,7 +34,8 @@ module Api
     			Rails.logger.info "JSON Converted Response: #{json_response}"
 
     			#return response to FrontEnd
-    			render json: json_response
+                render json: json_response
+                
     		end
 
     		private
@@ -50,6 +49,8 @@ module Api
     			json_val = Hash.from_xml(xml_val).to_json
     			return json_val
     		end
+
+
     	end
     end
 end
