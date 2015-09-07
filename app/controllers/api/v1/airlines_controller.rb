@@ -17,7 +17,7 @@ module Api
     			Rails.logger.info "Search parameters as XML String: #{xml_search_req}"
 
     			#REST call to backend  			
-    			url = 'http://localhost:8080/routes/search'
+    			url = backend_url + '/routes/search'
 		        escaped_url = URI.encode(url)
 		        uri = URI.parse(escaped_url)
 		        req = Net::HTTP::Post.new(uri.to_s, nil)
