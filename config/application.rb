@@ -24,6 +24,17 @@ module MiddleWare
     # Do not swallow errors in after_commit/after_rollback callbacks.
     #config.active_record.raise_in_transactional_callbacks = true
 
+    config.before_configuration do
+        env_file = File.join(Rails.root, 'config', 'application.yml')
+        if File.exists?(env_file)
+            all_config = YAML.load(ERB.new(IO.read(env_file)).result) || {}
+            hash = all_config[Rails.env] 
+            hash.each do |key, val|
+                ENV[key]= val
+            end
+        end 
+    end
+
     config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors", :debug => true, :logger => Rails.logger do allow do origins '*'
         resource '*',
      :headers => :any,

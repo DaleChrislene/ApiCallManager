@@ -1,0 +1,11 @@
+development:
+  AIRLINE_SEARCH_HOST: http://localhost:8080
+  XML_ROOT : route
+  SEARCH_API : /routes/search
+  XML_CONTENT_TYPE : application/xml
+
+production:
+  AIRLINE_SEARCH_HOST : http://morning-everglades-2967.herokuapp.com
+  XML_ROOT : route
+  XML_CONTENT_TYPE : /routes/search
+  XML_CONTENT_TYPE : application/xml
