@@ -3,9 +3,11 @@ development:
   XML_ROOT : route
   SEARCH_API : /routes/search
   XML_CONTENT_TYPE : application/xml
+  JSON_CONTENT_TYPE : application/json
 
 production:
   AIRLINE_SEARCH_HOST : http://morning-everglades-2967.herokuapp.com
   XML_ROOT : route
   XML_CONTENT_TYPE : /routes/search
   XML_CONTENT_TYPE : application/xml
+  JSON_CONTENT_TYPE : application/json

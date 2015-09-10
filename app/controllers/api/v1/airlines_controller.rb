@@ -11,8 +11,8 @@ module Api
     			search_params = {:from => params[:from], :to => params[:to]}
     			search_params = search_params.to_json
 
-                #call helper methods to make post call
-                init_airline_helper(search_params, ENV['XML_CONTENT_TYPE'], ENV['SEARCH_API'])
+                #call helper methods to make post request
+                init_airline_helper(search_params, ENV['XML_CONTENT_TYPE'],ENV['JSON_CONTENT_TYPE'],  ENV['SEARCH_API'])
                 search_result = call_post_api()
 
     			#return response to FrontEnd
