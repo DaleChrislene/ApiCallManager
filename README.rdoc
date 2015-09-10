@@ -1,28 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails App
 
-Things you may want to cover:
+1)There is an API to receive a route request (check AirlineSearch and AirlineSearchBackend Repository) which accepts post requests containing at
+ http://pure-river-4101.herokuapp.com/api/v1/search 
 
-* Ruby version
+JSON obect of form
+{
+  "from" : "location1",
+  "to"  : "location2"
+}
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
