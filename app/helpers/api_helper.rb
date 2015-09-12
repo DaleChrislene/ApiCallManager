@@ -44,14 +44,17 @@ module ApiHelper
     	req = Net::HTTP::Post.new(uri.to_s, nil)
     	req.body = search_req_params
     	req.content_type = req_content_type
+        http = Net::HTTP.new(uri.hostname, uri.port)
+        http.use_ssl = (uri.scheme == "https")
     	begin
-    		res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+    		res = http.start do |http|               
     			http.request(req)
     		end
     		search_res = res.body
     		status = $COMMON_CONST['OK']
 
     	rescue StandardError => e
+            Rails.logger.info "Error:::::: #{e}"
     		search_res = $COMMON_CONST['ERROR_XML']
     		status = $COMMON_CONST['SERVICE_UNAVAILABLE']
     	end
