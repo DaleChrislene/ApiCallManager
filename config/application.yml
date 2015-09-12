@@ -13,8 +13,8 @@ test:
   JSON_CONTENT_TYPE : application/json
 
 production:
-  AIRLINE_SEARCH_HOST : http://morning-everglades-2967.herokuapp.com
+  AIRLINE_SEARCH_HOST : https://morning-everglades-2967.herokuapp.com
   XML_ROOT : route
-  XML_CONTENT_TYPE : /routes/search
+  SEARCH_API : /routes/search
   XML_CONTENT_TYPE : application/xml
   JSON_CONTENT_TYPE : application/json
