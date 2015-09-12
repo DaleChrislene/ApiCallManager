@@ -1,0 +1,8 @@
+rspec_search:
+  ERROR_JSON: '{"error":null}'
+  XML_MANY_RESULTS: "<airlines> <airline><airlineName>A</airlineName></airline><airline><airlineName>B</airlineName></airline><airline><airlineName>C</airlineName></airline></airlines>"
+  JSON_MANY_RESULTS: '{"airlines":{"airline":[{"airlineName":"A"},{"airlineName":"B"},{"airlineName":"C"}]}}'
+  XML_SINGLE_RESULT: '<airlines> <airline><airlineName>A</airlineName></airline></airlines>'
+  JSON_SINGLE_RESULT: '{"airlines":{"airline":{"airlineName":"A"}}}'
+  XML_EMPTY_RESULT: '<airlines/>'
+  JSON_EMPTY_RESULT: '{"airlines":null}'

@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+require "action_controller/railtie"
+
 #require 'rails/all'
 #require "action_controller/railtie"
 
@@ -31,6 +33,15 @@ module MiddleWare
             hash = all_config[Rails.env] 
             hash.each do |key, val|
                 ENV[key]= val
+            end
+        end 
+
+        $COMMON_CONST = Hash.new
+        common_constants_file = File.join(Rails.root, 'config', 'common_const.yml')
+        if File.exists?(common_constants_file)
+            all_const = YAML.load(ERB.new(IO.read(common_constants_file)).result) || {}           
+            all_const.each do |key, val|
+                $COMMON_CONST[key]= val
             end
         end 
     end

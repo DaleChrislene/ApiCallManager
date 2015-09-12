@@ -1,0 +1,6 @@
+OK: 200
+SERVICE_UNAVAILABLE: 500
+BAD_REQUEST: 400
+ERROR_XML: "<error></error>"
+DEFAULT_JSON_RESPONSE: '{"airlines":null}'
+DEFAULT_XML_RESPONSE: "<route><from></from><to></to></route>"
