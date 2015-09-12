@@ -91,13 +91,11 @@ describe Api::V1::AirlinesController do
 		describe 'test for Status and  Response' do
 			it ' expects status 500 when backend service is unavailable' do
 				post 'search', {:from => 'from', :to => 'to'}
-
 				expected_val = MultiJson.load(response.body)
 				expect(expected_val['status']).to eq(common_const['SERVICE_UNAVAILABLE'])
 			end
 			it ' expects error response when backend service is unavailable' do
 				post 'search', {:from => 'from', :to => 'to'}
-
 				expected_val = MultiJson.load(response.body)
 				expect(expected_val['response']).to eq(airline_const['ERROR_JSON'])
 			end
