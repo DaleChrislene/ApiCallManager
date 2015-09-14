@@ -27,34 +27,31 @@ module MiddleWare
     #config.active_record.raise_in_transactional_callbacks = true
 
     config.before_configuration do
-        env_file = File.join(Rails.root, 'config', 'application.yml')
-        if File.exists?(env_file)
-            all_config = YAML.load(ERB.new(IO.read(env_file)).result) || {}
-            hash = all_config[Rails.env] 
-            hash.each do |key, val|
-                ENV[key]= val
-            end
-        end 
+      env_file = File.join(Rails.root, 'config', 'application.yml')
+      if File.exists?(env_file)
+        all_config = YAML.load(ERB.new(IO.read(env_file)).result) || {}
+        hash = all_config[Rails.env]
+        hash.each do |key, val|
+          ENV[key]= val
+        end
+      end
 
-        $COMMON_CONST = Hash.new
-        common_constants_file = File.join(Rails.root, 'config', 'common_const.yml')
-        if File.exists?(common_constants_file)
-            all_const = YAML.load(ERB.new(IO.read(common_constants_file)).result) || {}           
-            all_const.each do |key, val|
-                $COMMON_CONST[key]= val
-            end
-        end 
+      $COMMON_CONST = Hash.new
+      common_constants_file = File.join(Rails.root, 'config', 'common_const.yml')
+      if File.exists?(common_constants_file)
+        all_const = YAML.load(ERB.new(IO.read(common_constants_file)).result) || {}
+        all_const.each do |key, val|
+          $COMMON_CONST[key]= val
+        end
+      end
     end
 
     config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors", :debug => true, :logger => Rails.logger do allow do origins '*'
         resource '*',
-     :headers => :any,
-     :methods => [:get, :post, :delete, :put, :options],
-     :max_age => 0
-
-     
- end
-end
-
+          :headers => :any,
+          :methods => [:get, :post, :delete, :put, :options],
+          :max_age => 0
+      end
+    end
   end
 end
